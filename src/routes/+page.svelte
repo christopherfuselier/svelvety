@@ -4,7 +4,7 @@
     import RedButton from "../lib/components/buttons/RedButton.svelte";
 </script>
 
-Homepage!
+CF's home page
 
 <div class="flex gap-6">
     <WhiteButton>White Button</WhiteButton>
