@@ -1,24 +1,21 @@
+<script>
+	import ProductCard from "./ProductCard.svelte";
+	import { mockProducts } from "$lib/mockProducts";
+
+	console.log(mockProducts);
+</script>
 <main class="grid gap-6 md:[grid-template-columns:250px_auto]">
 	<div class="border p-6">Filters will go here</div>
 	<div class="border p-6">
-		<div class="font-bold">Canterbury Tales by Jeff Chaucer</div>
-		<p>Whan that Aprill with his shoures soote
-			The droghte of March hath perced to the roote,
-			And bathed every veyne in switch licour
-			Of which vertu engendred is the flour;
-			Whan Zephirus eek with his sweete breeth
-			Inspired hath in every holt and heeth
-			The tendre croppes, and the yonge sonne
-			Hath in the Ram his half cours yronne,
-			And smale foweles maken melodye,
-			That slepen al the nyght with open ye
-			(So Priketh hem Nature in hir corages),
-			Thanne longen folk to goon on pilgrimages,
-			And palmeres for to seken straunge strondes,
-			To ferne halwes, kowthe in sondry londes;
-			And specially from every shires ende
-			Of Engelond to Caunterbury they wende,
-			The hooly blisful martir for to seke,
-			That hem hath holpen whan that they were seeke.</p>
+		<h1>Products</h1>
+
+
+		<div class="grid gap-6 grid-cols-2 lg:grid-cols-3">
+
+		{#each mockProducts as prod}
+			<ProductCard {...prod}></ProductCard>
+		{/each}
+
+		</div>
 	</div>
 </main>
