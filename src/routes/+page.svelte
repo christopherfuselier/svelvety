@@ -1,24 +1,13 @@
 <script>
-	import Footer from "../lib/components/Footer.svelte";
-import Header from "../lib/components/Header.svelte";
-	import PlpPageLayout from "../lib/components/PlpPageLayout.svelte";
-
-	let rtl = false;
-
-	function toggleRTL() {
-		rtl = !rtl;
-	}
+    import WhiteButton from "../lib/components/buttons/WhiteButton.svelte";
+    import BlackButton from "../lib/components/buttons/BlackButton.svelte";
+    import RedButton from "../lib/components/buttons/RedButton.svelte";
 </script>
 
-<button on:click={toggleRTL}>Toggle RTL</button>
+Homepage!
 
-<div class="grid gap-6" dir={rtl ? 'rtl' : null}>
-
-    <Header/>
-
-	<PlpPageLayout/>
-
-	<Footer/>
-
+<div class="flex gap-6">
+    <WhiteButton>White Button</WhiteButton>
+    <BlackButton>Black Button</BlackButton>
+    <RedButton>Red Button</RedButton>
 </div>
-

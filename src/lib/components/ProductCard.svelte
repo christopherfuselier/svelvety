@@ -1,36 +1,44 @@
 <script>
-	import ColorSwatch from './ColorSwatch.svelte';
-	import ProductImage from './ProductImage.svelte';
+    import ColorSwatch from './ColorSwatch.svelte';
+    import ProductImage from './ProductImage.svelte';
+    import {addToCart} from '../stores/cartItems';
 
-	export let title;
-	export let variants;
+    export let title;
+    export let variants;
+
     let selectedVariantIndex = 0;
-	let selectedVariant;
+    let selectedVariant;
 
-	function swatchClicked(dex) {
-		selectedVariantIndex = dex;
-	}
+    function swatchClicked(index) {
+        selectedVariantIndex = index;
+    }
 
-	$: selectedVariant = variants[selectedVariantIndex];
+    function addToCartClicked() {
+        addToCart(title, selectedVariant);
+    }
+
+    $: selectedVariant = variants[selectedVariantIndex];
 </script>
 
 <div class="border p-3 grid gap-2">
 
-	<ProductImage hex={selectedVariant.hex}></ProductImage>
+    <ProductImage hex={selectedVariant.hex} />
 
-	<div class="font-bold">{title}</div>
+    <div class="font-bold">{title}</div>
 
-	<div class="flex gap-2">
-		{#each variants as variant, dex}
-			<ColorSwatch 
-				on:click={() => swatchClicked(dex)}
-				hex={variant.hex} selected={dex === selectedVariantIndex}></ColorSwatch>
-		{/each}
-	</div>
+    <div class="flex gap-2">
+        {#each variants as variant, index}
+            <ColorSwatch
+                    on:click={() => swatchClicked(index)}
+                    hex={variant.hex}
+                    selected={index === selectedVariantIndex}
+            />
+        {/each}
+    </div>
 
-	<div class="">{selectedVariant.price}</div>
-
-	<div class="">
-		<button class="bg-black text-white p-2">Add to Cart</button>
-	</div>
+    <div class="">${selectedVariant.price}</div>
+    <div class="">
+        <button on:click={addToCartClicked}
+                class="bg-black text-white p-2">Add to Cart</button>
+    </div>
 </div>
